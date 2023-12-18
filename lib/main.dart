@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_aprexi_praxis/di/app_modules.dart';
+import 'package:flutter_aprexi_praxis/presentation/model/login/login_screen.dart';
 
 void main() {
+  AppModules().setup();
   runApp(const MainApp());
 }
 
@@ -10,11 +13,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      home: LoginScreen(),
     );
   }
 }
