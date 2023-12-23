@@ -21,4 +21,25 @@ class OfferDataImpl extends OfferRepository {
 
     return OfferRemoteMapper.fromRemoteOffer(remoteOfferCompany);
   }
+
+  @override
+  Future<ListRequestOffer> getListRequestOffer(int idUser, String token) async {
+    final remoteListRequestOffer = await _remoteImpl.getListRequestOffer(idUser, token);
+
+    return OfferRemoteMapper.fromRemoteListRequestOffer(remoteListRequestOffer);
+  }
+
+  @override
+  Future<ListFollowOffer> getListFollowOffer(int idUser, String token) async {
+    final remoteListFollowOffer = await _remoteImpl.getListFollowOffer(idUser, token);
+
+    return OfferRemoteMapper.fromRemoteListFollowOffer(remoteListFollowOffer);
+  }
+
+  @override
+  Future<ListDetailRequestOffer> getListDetailRequestOffer(int idUser,int idOffer, String token) async {
+    final remoteListDetailRequestOffer = await _remoteImpl.getListDetailRequestOffer(idUser, idOffer, token);
+
+    return OfferRemoteMapper.fromRemoteListDetailRequestOffer(remoteListDetailRequestOffer);
+  }
 }

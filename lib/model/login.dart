@@ -9,3 +9,10 @@ class Login {
         required this.token,
     });
 }
+
+class UserData {
+  final int userId;
+  final String token;
+
+  UserData({required this.userId, required this.token});
+}

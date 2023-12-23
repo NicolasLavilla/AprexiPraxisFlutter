@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_aprexi_praxis/di/app_modules.dart';
-import 'package:flutter_aprexi_praxis/presentation/model/login/login_screen.dart';
+import 'package:flutter_aprexi_praxis/presentation/navigation/navigation_routes.dart';
 
 void main() {
   AppModules().setup();
@@ -12,8 +12,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LoginScreen(),
+    return MaterialApp.router(
+      routerConfig: NavigationRoutes().router
     );
   }
 }
+ 

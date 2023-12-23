@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_aprexi_praxis/di/app_modules.dart';
-import 'package:flutter_aprexi_praxis/presentation/model/login/bottom_nav_screen.dart';
-import 'package:flutter_aprexi_praxis/presentation/model/login/viewmodel/login_view_model.dart';
+import 'package:flutter_aprexi_praxis/presentation/navigation/navigation_routes.dart';
+import 'package:flutter_aprexi_praxis/presentation/view/login/viewmodel/login_view_model.dart';
 import 'package:flutter_aprexi_praxis/presentation/model/resource_state.dart';
 import 'package:flutter_aprexi_praxis/presentation/widget/error/error_view.dart';
 import 'package:flutter_aprexi_praxis/presentation/widget/loading/loading_view.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,15 +33,15 @@ class _LoginScreenState extends State<LoginScreen> {
         case Status.SUCCESS:
           LoadingView.hide();
           if (state.data?.success == true) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => BottomNavScreen()),
-            );
+      
+            context.go(NavigationRoutes.LIST_OFFER_COMPANY_SCREEN_ROUTE);
+
+
           } else {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
+                return const AlertDialog(
                   title: Text("No se ha podido acceder a la pantalla"),
                 );
               },

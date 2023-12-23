@@ -2,8 +2,7 @@ import 'package:flutter_aprexi_praxis/data/offer/remote/model/offer_remote_model
 import 'package:flutter_aprexi_praxis/model/offer.dart';
 
 class OfferRemoteMapper {
-  static ListOfferCompany fromRemoteListOfferCompany(
-      ListOfferCompanyRemoteModel remoteModel) {
+  static ListOfferCompany fromRemoteListOfferCompany(ListOfferCompanyRemoteModel remoteModel) {
     return ListOfferCompany(
         offer: fromRemoteListOffer(remoteModel.offer),
         success: remoteModel.success,
@@ -20,6 +19,14 @@ class OfferRemoteMapper {
   }*/
 
   //---------------------------------------------
+
+  static ListFollowOffer fromRemoteListFollowOffer(ListFollowOfferRemoteModel remoteModel) {
+    return ListFollowOffer(
+        offer: fromRemoteListOffer(remoteModel.offer),
+        success: remoteModel.success,
+        idError: remoteModel.idError,
+        messageError: remoteModel.messageError);
+  }
 
   static List<Offer> fromRemoteListOffer(List<OfferRemoteModel> remoteModels) {
     List<Offer> offers = [];
@@ -56,7 +63,7 @@ class OfferRemoteMapper {
       );
     }
 
-    return offers; // Devolver la lista completa después de agregar todos los elementos
+    return offers;
   }
 
   static Offer fromRemoteOffer(OfferRemoteModel remoteModel) {
@@ -87,5 +94,66 @@ class OfferRemoteMapper {
       followOffer: remoteModel.followOffer,
       requestOffer: remoteModel.requestOffer,
     );
+  }
+
+
+
+static ListRequestOffer fromRemoteListRequestOffer(ListRequestOfferRemoteModel remoteModel) {
+    return ListRequestOffer(
+        requestOffer: fromRemoteRequestOffers(remoteModel.requestOffer),
+        success: remoteModel.success,
+        idError: remoteModel.idError,
+        messageError: remoteModel.messageError);
+  }
+
+static List<RequestOffer> fromRemoteRequestOffers(List<RequestOfferRemoteModel> remoteModels) {
+    List<RequestOffer> requestOffers = [];
+
+    for (var remoteModel in remoteModels) {
+      requestOffers.add(
+        RequestOffer(
+          idRequestOffer: remoteModel.idRequestOffer,
+          idOffer: remoteModel.idOffer,
+          idCompany: remoteModel.idCompany,
+          nameCompany: remoteModel.nameCompany,
+          datePublication: remoteModel.datePublication,
+          numRegistered: remoteModel.numRegistered,
+          offerTitle: remoteModel.offerTitle,
+          logoCompany: remoteModel.logoCompany,
+          dateRequest: remoteModel.dateRequest,
+          stateRequest: remoteModel.stateRequest,
+          nameState: remoteModel.nameState
+        ),
+      );
+    }
+
+    return requestOffers;
+  }
+
+
+
+  static ListDetailRequestOffer fromRemoteListDetailRequestOffer(ListDetailRequestOfferRemoteModel remoteModel) {
+    return ListDetailRequestOffer(
+        detailRequestOffer: fromRemoteDetailRequestOffers(remoteModel.detailRequestOffer),
+        success: remoteModel.success,
+        idError: remoteModel.idError,
+        messageError: remoteModel.messageError);
+  }
+
+static List<DetailRequestOffer> fromRemoteDetailRequestOffers(List<DetailRequestOfferRemoteModel> remoteModels) {
+    List<DetailRequestOffer> requestOffers = [];
+
+    for (var remoteModel in remoteModels) {
+      requestOffers.add(
+        DetailRequestOffer(
+          descriptionActionRequest: remoteModel.descriptionActionRequest,
+          dateRequest: remoteModel.dateRequest,
+          stateRequest: remoteModel.stateRequest,
+          nameState: remoteModel.nameState
+        ),
+      );
+    }
+
+    return requestOffers;
   }
 }
