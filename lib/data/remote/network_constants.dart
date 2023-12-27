@@ -9,5 +9,7 @@ class NetworkConstants {
   static const LIST_REQUEST_OFFER = "$BASE_URL/ListRequestOffer.php";
   static const LIST_FOLLOW_OFFER = "$BASE_URL/ListFollowtOffer.php";
   static const LIST_DETAIL_REQUEST_OFFER = "$BASE_URL/ListDetailRequestOffer.php";
+  static const LIST_STUDIES_USER = "$BASE_URL/ListStudiesUser.php";
+  static const LIST_LANGUAGES_USER = "$BASE_URL/ListLanguagesUser.php";
   static const LOGIN_USER = "$BASE_URL/LoginUser.php";
 }
