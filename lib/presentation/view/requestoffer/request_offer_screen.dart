@@ -60,15 +60,15 @@ class _RequestOfferScreenState extends State<RequestOfferScreen> {
     });
 
     _requestOfferViewModel.fetchListRequestOfferStateUser(
-        userData.userId.toInt(),
-      userData.token);
+        userData.userId!.toInt(),
+      userData.token!);
        }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Request Offers"),
+        title: const Text("Ofertas Inscritas"),
       ),
       body: SafeArea(
         child: _buildOfferList(),

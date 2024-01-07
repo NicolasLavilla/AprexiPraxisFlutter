@@ -60,8 +60,8 @@ class _FollowOfferScreenState extends State<FollowOfferScreen> {
     });
 
     _followOfferViewModel.fetchListFollowOfferStateUser(
-      userData.userId.toInt(),
-      userData.token,
+      userData.userId!.toInt(),
+      userData.token!,
     );
   }
 
@@ -69,7 +69,7 @@ class _FollowOfferScreenState extends State<FollowOfferScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Follow Offers"),
+        title: const Text("Ofertas Guardadas"),
       ),
       body: SafeArea(
         child: _buildOfferList(),

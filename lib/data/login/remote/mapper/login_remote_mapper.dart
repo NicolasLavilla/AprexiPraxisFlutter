@@ -16,3 +16,17 @@ class LoginRemoteMapper {
         token: model.token);
   }
 }
+
+class CheckTokenRemoteMapper {
+  static CheckToken fromRemote(CheckTokenRemoteModel remoteModel) {
+    return CheckToken(
+        checkToken: remoteModel.checkToken,
+        message: remoteModel.message);
+  }
+
+  static CheckTokenRemoteModel toRemote(CheckToken model) {
+    return CheckTokenRemoteModel(
+         checkToken: model.checkToken,
+        message: model.message);
+  }
+}

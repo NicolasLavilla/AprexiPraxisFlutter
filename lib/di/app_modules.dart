@@ -61,39 +61,53 @@ class AppModules {
     inject.registerFactory(() => LoginRemoteImpl(networkClient: inject.get()));
     inject.registerFactory(() => SharedPreferencesHelper());
     inject.registerFactory(() => LoginLocalImpl());
-    inject.registerFactory<LoginRepository>(() => LoginDataImpl(remoteImpl: inject.get(), localImpl: inject.get()));
+    inject.registerFactory<LoginRepository>(
+        () => LoginDataImpl(remoteImpl: inject.get(), localImpl: inject.get()));
     inject.registerFactory(() => LoginViewModel(loginRepository: inject.get()));
   }
 
   _setupCompanyModule() {
-    inject.registerFactory(() => CompanyRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<CompanyRepository>(() => CompanyDataImpl(remoteImpl: inject.get()));
-    inject.registerFactory(() => CompanyViewModel(companyRepository: inject.get()));
+    inject
+        .registerFactory(() => CompanyRemoteImpl(networkClient: inject.get()));
+    inject.registerFactory<CompanyRepository>(
+        () => CompanyDataImpl(remoteImpl: inject.get()));
+    inject.registerFactory(
+        () => CompanyViewModel(companyRepository: inject.get()));
   }
 
   _setupStudiesUserModule() {
-    inject.registerFactory(() => StudiesUserRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<StudiesRepository>(() => StudiesUserDataImpl(remoteImpl: inject.get()));
+    inject.registerFactory(
+        () => StudiesUserRemoteImpl(networkClient: inject.get()));
+    inject.registerFactory<StudiesRepository>(
+        () => StudiesUserDataImpl(remoteImpl: inject.get()));
   }
 
-   _setupLanguagesUserModule() {
-    inject.registerFactory(() => LanguagesUserRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<LanguagesRepository>(() => LanguagesDataImpl(remoteImpl: inject.get()));
+  _setupLanguagesUserModule() {
+    inject.registerFactory(
+        () => LanguagesUserRemoteImpl(networkClient: inject.get()));
+    inject.registerFactory<LanguagesRepository>(
+        () => LanguagesDataImpl(remoteImpl: inject.get()));
   }
 
- _setupExperienceJobUserModule() {
-    inject.registerFactory(() => ExperienceJobUserRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<ExperienceRepository>(() => ExperienceJobUserDataImpl(remoteImpl: inject.get()));
+  _setupExperienceJobUserModule() {
+    inject.registerFactory(
+        () => ExperienceJobUserRemoteImpl(networkClient: inject.get()));
+    inject.registerFactory<ExperienceRepository>(
+        () => ExperienceJobUserDataImpl(remoteImpl: inject.get()));
   }
 
   _setupLicenseUserModule() {
-    inject.registerFactory(() => LicenseUserRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<LicenseRepository>(() => LicenseUserDataImpl(remoteImpl: inject.get()));
+    inject.registerFactory(
+        () => LicenseUserRemoteImpl(networkClient: inject.get()));
+    inject.registerFactory<LicenseRepository>(
+        () => LicenseUserDataImpl(remoteImpl: inject.get()));
   }
 
   _setupProfessionalProyectsUserModule() {
-    inject.registerFactory(() => ProfessionalProyectsUserRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<ProfessionalProyectsRepository>(() => ProfessionalProyectsUserDataImpl(remoteImpl: inject.get()));
+    inject.registerFactory(
+        () => ProfessionalProyectsUserRemoteImpl(networkClient: inject.get()));
+    inject.registerFactory<ProfessionalProyectsRepository>(
+        () => ProfessionalProyectsUserDataImpl(remoteImpl: inject.get()));
   }
 
   _setupUserDataModule() {
@@ -103,19 +117,23 @@ class AppModules {
 
   _setupCurriculumUserModule() {
     inject.registerFactory(() => CurriculumViewModel(
-      studiesRepository: inject.get(), 
-      languagesRepository: inject.get(),
-      experienceJobRepository: inject.get(),
-      licenseRepository: inject.get(),
-      professionalProyectsRepository: inject.get(),
-      userRepository: inject.get()));
+        studiesRepository: inject.get(),
+        languagesRepository: inject.get(),
+        experienceJobRepository: inject.get(),
+        licenseRepository: inject.get(),
+        professionalProyectsRepository: inject.get(),
+        userRepository: inject.get()));
   }
 
   _setupOffersModule() {
     inject.registerFactory(() => OfferRemoteImpl(networkClient: inject.get()));
-    inject.registerFactory<OfferRepository>(() => OfferDataImpl(remoteImpl: inject.get()));
-    inject.registerFactory(() => OfferCompanyViewModel(offerRepository: inject.get()));
-    inject.registerFactory(() => RequestOfferViewModel(offerRepository: inject.get()));
-    inject.registerFactory(() => FollowOfferViewModel(offerRepository: inject.get()));
+    inject.registerFactory<OfferRepository>(
+        () => OfferDataImpl(remoteImpl: inject.get()));
+    inject.registerFactory(
+        () => OfferCompanyViewModel(offerRepository: inject.get()));
+    inject.registerFactory(
+        () => RequestOfferViewModel(offerRepository: inject.get()));
+    inject.registerFactory(
+        () => FollowOfferViewModel(offerRepository: inject.get()));
   }
 }

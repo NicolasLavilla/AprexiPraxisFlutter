@@ -15,7 +15,7 @@ class CompanyRemoteModel {
     String nameTypeCompany;
     String nameSectorBusiness;
     String logoCompany;
-    String imageCompany;
+    String? imageCompany;
     int followCompany;
     bool success;
     dynamic idError;

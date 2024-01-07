@@ -50,7 +50,7 @@ class CurriculumViewModel extends BaseViewModel {
         _professionalProyectsRepository = professionalProyectsRepository,
         _userRepository = userRepository;
 
-  fetchListFollowOfferStateUser(int idUser, String token) {
+  fetchListStudiesStateUser(int idUser, String token) {
     getListStudiesUserState.add(ResourceState.loading());
 
     _studiesRepository

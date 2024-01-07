@@ -21,3 +21,23 @@ class LoginRemoteModel {
         "token": token,
     };
 }
+
+class CheckTokenRemoteModel {
+    bool checkToken;
+    String message;
+
+    CheckTokenRemoteModel({
+        required this.checkToken,
+        required this.message,
+    });
+
+    factory CheckTokenRemoteModel.fromMap(Map<String, dynamic> json) => CheckTokenRemoteModel(
+        checkToken: json["checkToken"],
+        message: json["message"],
+    );
+
+    Map<String, dynamic> toMap() => {
+        "checkToken": checkToken,
+        "message": message,
+    };
+}

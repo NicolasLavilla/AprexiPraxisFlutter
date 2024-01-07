@@ -28,4 +28,26 @@ class LoginDataImpl extends LoginRepository {
   saveLogin(int idUser, String token) async {
     await _localImpl.saveUserData(idUser, token);
   }
+
+  cleanAllLogin() async {
+    await _localImpl.cleanAllLogin();
+  }
+  
+  @override
+  Future<CheckToken> getCheckToken(String token) async {
+    final checkToken = await _remoteImpl.getCheckToken(token);
+
+    if(checkToken.checkToken){
+
+    }else{
+      cleanAllLogin();
+    }
+
+    return CheckTokenRemoteMapper.fromRemote(checkToken);
+  }
+  
+  @override
+  Future<UserData> getUserDataCache() {
+    return _localImpl.getUserDataCache();
+  }
 }

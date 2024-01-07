@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_aprexi_praxis/di/app_modules.dart';
+import 'package:flutter_aprexi_praxis/model/login.dart';
 import 'package:flutter_aprexi_praxis/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_aprexi_praxis/presentation/view/login/viewmodel/login_view_model.dart';
 import 'package:flutter_aprexi_praxis/presentation/model/resource_state.dart';
@@ -18,12 +19,55 @@ class _LoginScreenState extends State<LoginScreen> {
   final LoginViewModel _loginViewModel = inject<LoginViewModel>();
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
+  late UserData _userData;
 
   @override
   void initState() {
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+
+    _loginViewModel.getCheckTokenState.stream.listen((state) {
+      switch (state.status) {
+        case Status.LOADING:
+          LoadingView.show(context);
+          break;
+        case Status.SUCCESS:
+          LoadingView.hide();
+          if (state.data?.checkToken == true) {
+            context.go(NavigationRoutes.LIST_OFFER_COMPANY_SCREEN_ROUTE);
+          } else {
+            context.go(NavigationRoutes.LOGIN_SCREEN_ROUTE);
+          }
+          break;
+        case Status.ERROR:
+          LoadingView.hide();
+          ErrorView.show(context, state.exception!.toString(), () {});
+          break;
+      }
+    });
+
+    _loginViewModel.getUserDataCacheState.stream.listen((state) {
+      switch (state.status) {
+        case Status.LOADING:
+          LoadingView.show(context);
+          break;
+        case Status.SUCCESS:
+          LoadingView.hide();
+          _userData = state.data!;
+          if(_userData.token != null){
+            _loginViewModel.fetchCheckToken(_userData.token!);
+          }else{
+
+          }
+          
+          break;
+        case Status.ERROR:
+          LoadingView.hide();
+          ErrorView.show(context, state.exception!.toString(), () {});
+          break;
+      }
+    });
 
     _loginViewModel.getLoginUserState.stream.listen((state) {
       switch (state.status) {
@@ -33,10 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
         case Status.SUCCESS:
           LoadingView.hide();
           if (state.data?.success == true) {
-      
             context.go(NavigationRoutes.LIST_OFFER_COMPANY_SCREEN_ROUTE);
-
-
           } else {
             showDialog(
               context: context,
@@ -54,17 +95,21 @@ class _LoginScreenState extends State<LoginScreen> {
           break;
       }
     });
+
+    _loginViewModel.fetchUserDataCache();
   }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _loginViewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),

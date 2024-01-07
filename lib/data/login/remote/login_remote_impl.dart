@@ -30,6 +30,21 @@ class LoginRemoteImpl {
     }
   }
 
+  Future<CheckTokenRemoteModel> getCheckToken(String token) async {
+    try {
+
+      final response = await _networkClient.dio.get(
+        NetworkConstants.CHECK_TOKEN,
+        queryParameters: {
+          "token": token},
+      );
+
+      final variable = CheckTokenRemoteModel.fromMap(response.data); 
+      return variable;
+    } catch (e) {
+      throw RemoteErrorMapper.getException(e);
+    }
+  }
 
 String hashPassword(String password) {
   var bytes = utf8.encode(password);

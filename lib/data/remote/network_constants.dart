@@ -16,4 +16,5 @@ class NetworkConstants {
   static const LIST_PROFESSIONAL_PROYECTS_USER = "$BASE_URL/ListProfessionalProyectsUser.php";
   static const LIST_USER_DATA = "$BASE_URL/User.php";
   static const LOGIN_USER = "$BASE_URL/LoginUser.php";
+  static const CHECK_TOKEN = "$BASE_URL/CheckToken.php";
 }
