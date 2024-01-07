@@ -23,27 +23,3 @@ class MyPageView extends StatelessWidget {
     );
   }
 }
-
-
-
-/*class MyPageView extends StatelessWidget {
-  const MyPageView({super.key});
-
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'My Offers',
-      home: Scaffold(
-        body: PageView(
-          physics: const BouncingScrollPhysics(),
-          children: const <Widget>[
-            RequestOfferScreen(),
-            FollowOfferScreen(),
-          ],
-        ),
-      ),
-    );
-  }
-}*/
